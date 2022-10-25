@@ -20,7 +20,7 @@ import tarfile
 import tempfile
 
 import numpy as np
-import tensorflow.compat.v1 as tf
+import tensorflow._api.v2.compat.v1 as tf
 
 
 class NoExtractedExamplesError(Exception):

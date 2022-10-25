@@ -1,0 +1,1 @@
+생성한 sample 데이터 중 2개를 이용해 interpolation 해보았습니다.

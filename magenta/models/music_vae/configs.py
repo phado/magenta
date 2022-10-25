@@ -642,3 +642,4 @@ CONFIG_MAP['groovae_2bar_hits_control_tfds'] = Config(
         inference_pitch_classes=data.REDUCED_DRUM_PITCH_CLASSES),
     tfds_name='groove/2bar-midionly'
 )
+

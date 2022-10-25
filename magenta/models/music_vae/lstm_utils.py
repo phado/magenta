@@ -17,7 +17,7 @@ import collections
 
 from magenta.contrib import rnn as contrib_rnn
 from magenta.contrib import seq2seq as contrib_seq2seq
-import tensorflow.compat.v1 as tf
+import tensorflow._api.v2.compat.v1 as tf
 
 rnn = tf.nn.rnn_cell
 

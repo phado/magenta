@@ -17,7 +17,7 @@ import os
 
 from magenta.models.music_vae import configs
 from magenta.models.music_vae import data
-import tensorflow.compat.v1 as tf
+import tensorflow._api.v2.compat.v1 as tf
 import tf_slim
 
 flags = tf.app.flags

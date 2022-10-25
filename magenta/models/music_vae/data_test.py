@@ -27,7 +27,7 @@ from magenta.models.music_vae import data
 import note_seq
 from note_seq import testing_lib
 import numpy as np
-import tensorflow.compat.v1 as tf
+import tensorflow._api.v2.compat.v1 as tf
 
 tf.disable_v2_behavior()
 

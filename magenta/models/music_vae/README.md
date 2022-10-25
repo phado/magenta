@@ -33,19 +33,14 @@ For additional details, see our [blog post](https://g.co/magenta/groovae) and [p
 
 The easiest way to get started using a MusicVAE model is via our
 [Colab Notebook](https://g.co/magenta/musicvae-colab).
-The notebook contains instructions for sampling interpolating, and manipulating
-musical sequences with pre-trained MusicVAEs for melodies, drums, and
-three-piece "trios" (melody, bass, drums) of varying lengths.
+The notebook contains instructions for sampling interpolating, and manipulating musical sequences with pre-trained MusicVAEs for melodies, drums, and three-piece "trios" (melody, bass, drums) of varying lengths.
 
 ### Generate script w/ Pre-trained Models
 
-We provide a script in our [pip package](/README.md#installation) to generate
-outputs from the command-line.
+We provide a script in our [pip package](/README.md#installation) to generate outputs from the command-line.
 
 #### Pre-trained Checkpoints
-Before you can generate outputs, you must either
-[train your own model](#training-your-own-musicvae) or download pre-trained
-checkpoints from the table below.
+Before you can generate outputs, you must either [train your own model](#training-your-own-musicvae) or download pre-trained checkpoints from the table below.
 
 | ID | Config | Description | Link |
 | -- | ------ | ----------- | ---- |
@@ -61,17 +56,13 @@ checkpoints from the table below.
 | groovae_2bar_add_closed_hh | `groovae_2bar_add_closed_hh` | 2-bar model that adds (or replaces) closed hi-hat for an existing groove. | [download](https://storage.googleapis.com/magentadata/models/music_vae/checkpoints/groovae_2bar_add_closed_hh.tar)|
 | groovae_2bar_hits_control | `groovae_2bar_hits_control` | 2-bar groove autoencoder, with the input hits provided to the decoder as a conditioning signal. | [download](https://storage.googleapis.com/magentadata/models/music_vae/checkpoints/groovae_2bar_hits_control.tar)|
 
-Once you have selected a model, there are two operations you can perform with
-the generate script: `sample` and `interpolate`.
+Once you have selected a model, there are two operations you can perform with the generate script: `sample` and `interpolate`.
 
 #### Sample
 
-Sampling decodes random points in the latent space of the chosen model and
-outputs the resulting sequences in `output_dir`. Make sure you specify the
-matching `config` for the model (see the table above).
+Sampling decodes random points in the latent space of the chosen model and outputs the resulting sequences in `output_dir`. Make sure you specify the matching `config` for the model (see the table above).
 
-Download the `cat-mel_2bar` checkpoint above and run the following command to
-generate 5 2-bar melody samples.
+Download the `cat-mel_2bar` checkpoint above and run the following command to generate 5 2-bar melody samples.
 
 ```sh
 music_vae_generate \
@@ -82,9 +73,7 @@ music_vae_generate \
 --output_dir=/tmp/music_vae/generated
 ```
 
-Perhaps the most impressive samples come from the 16-bar trio model. Download
-the `hierdec-trio_16bar` checkpoint above (warning: 2 GB) and run the following
-command to generate 5 samples.
+Perhaps the most impressive samples come from the 16-bar trio model. Download the `hierdec-trio_16bar` checkpoint above (warning: 2 GB) and run the following command to generate 5 samples.
 
 ```sh
 music_vae_generate \
@@ -97,13 +86,7 @@ music_vae_generate \
 
 #### Interpolate
 
-To interpolate, you need to have two MIDI files to interpolate between. Each
-model has certain constraints<sup id="a1">[*](#f1)</sup> for these files. For
-example, the mel_2bar models only work if the input files are exactly 2-bars
-long and contain monophonic non-drum sequences. The trio_16bar models require
-16-bars with 3 instruments (based on program numbers): drums, piano or guitar,
-and bass. `num_outputs` specifies how many points along the path connecting the
-two inputs in latent space to decode, including the endpoints.
+To interpolate, you need to have two MIDI files to interpolate between. Each model has certain constraints<sup id="a1">[*](#f1)</sup> for these files. For example, the mel_2bar models only work if the input files are exactly 2-bars long and contain monophonic non-drum sequences. The trio_16bar models require 16-bars with 3 instruments (based on program numbers): drums, piano or guitar, and bass. `num_outputs` specifies how many points along the path connecting the two inputs in latent space to decode, including the endpoints.
 
 Try setting the inputs to be two of the samples you generated previously.
 
@@ -144,20 +127,11 @@ Learn more about the API in its [repo](https://goo.gl/magenta/musicvae-js).
 If you'd like to train a model on your own data, you will first need to set up
 your [Magenta environment](/README.md).
 
-Next, convert a collection of MIDI files
-into a TFRecord of NoteSequences following the instructions in
-[Building your Dataset](/magenta/scripts/README.md). If you have a large
-dataset, you may want to further preprocess the resulting TFRecord offline with
-[preprocess_tfrecord.py](preprocess_tfrecord.py). Otherwise, the NoteSequences
-will be preprocessed on the fly during training, which can often be a
-bottleneck. If your dataset is extremely large, consider running the script on
-a distributed platform like [Google Cloud DataFlow](https://beam.apache.org/documentation/runners/dataflow/).
+Next, convert a collection of MIDI files into a TFRecord of NoteSequences following the instructions in [Building your Dataset](/magenta/scripts/README.md). If you have a large dataset, you may want to further preprocess the resulting TFRecord offline with [preprocess_tfrecord.py](preprocess_tfrecord.py). Otherwise, the NoteSequences will be preprocessed on the fly during training, which can often be a bottleneck. If your dataset is extremely large, consider running the script on a distributed platform like [Google Cloud DataFlow](https://beam.apache.org/documentation/runners/dataflow/).
 
 You can then choose one of
 the pre-defined Configurations in [configs.py](configs.py) or define your own.
-Finally, you must execute the [training script](train.py). Below is an example
-command, training the `cat-mel_2bar_small` configuration and assuming your
-examples are stored at `/tmp/music_vae/mel_train_examples.tfrecord`.
+Finally, you must execute the [training script](train.py). Below is an example command, training the `cat-mel_2bar_small` configuration and assuming your examples are stored at `/tmp/music_vae/mel_train_examples.tfrecord`.
 
 ```sh
 music_vae_train \

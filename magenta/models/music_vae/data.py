@@ -26,7 +26,7 @@ from note_seq import chords_lib
 from note_seq import drums_encoder_decoder
 from note_seq import sequences_lib
 import numpy as np
-import tensorflow.compat.v1 as tf
+import tensorflow._api.v2.compat.v1 as tf
 import tensorflow_datasets as tfds
 
 PIANO_MIN_MIDI_PITCH = 21

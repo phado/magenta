@@ -16,7 +16,7 @@
 import abc
 
 from magenta.contrib import training as contrib_training
-import tensorflow.compat.v1 as tf
+import tensorflow._api.v2.compat.v1 as tf
 import tensorflow_probability as tfp
 import tf_slim
 

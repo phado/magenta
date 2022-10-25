@@ -22,7 +22,7 @@ import note_seq
 from note_seq import chords_lib
 from note_seq import performance_lib
 import numpy as np
-import tensorflow.compat.v1 as tf
+import tensorflow._api.v2.compat.v1 as tf
 
 CHORD_SYMBOL = note_seq.NoteSequence.TextAnnotation.CHORD_SYMBOL
 

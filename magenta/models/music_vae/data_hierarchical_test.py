@@ -23,7 +23,7 @@ import copy
 from magenta.models.music_vae import data_hierarchical
 import note_seq
 from note_seq import testing_lib
-import tensorflow.compat.v1 as tf
+import tensorflow._api.v2.compat.v1 as tf
 
 tf.disable_v2_behavior()
 

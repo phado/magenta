@@ -1,0 +1,1 @@
+music_vae_generate.py를 이용해 샘플데이터 생성
